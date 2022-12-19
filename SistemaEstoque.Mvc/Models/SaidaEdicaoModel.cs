@@ -4,6 +4,8 @@ namespace SistemaEstoque.Mvc.Models
 {
     public class SaidaEdicaoModel
     {
+        public string? Nome { get; set; }
+
         public Guid IdSaida { get; set; }
 
         public Guid IdMercadoria { get; set; }

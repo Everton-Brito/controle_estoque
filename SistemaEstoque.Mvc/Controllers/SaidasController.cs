@@ -151,8 +151,11 @@ namespace SistemaEstoque.Mvc.Controllers
             var model = new SaidaEdicaoModel();
             try
             {
-               var saida = _saidaDomainService.ObterSaida(id);
+               
+                var saida = _saidaDomainService.ObterSaida(id);
+                var nome = _mercadoriaDomainService.ObterMercadoria(saida.IdMercadoria);
 
+                model.Nome = nome.Nome;
                 model.IdSaida = saida.IdSaida;
                 model.Quantidade = saida.Quantidade.ToString();
                 model.DataHora = saida.DataHora;
@@ -174,17 +177,26 @@ namespace SistemaEstoque.Mvc.Controllers
             {
                 try
                 {
+                    var quantidadeEntrada = _entradaDomainService.ObterNome(model.Nome);
+
                     var saida = new Saida();
+                    if (int.Parse(model.Quantidade) > quantidadeEntrada.Quantidade)
+                    {
+                        TempData["MensagemErro"] = "Não pode cadastrar saida com quantidade maior que a entrada.";
+                        ModelInicial();
+                    }else
+                    {
+                        saida.IdSaida = model.IdSaida;
+                        saida.Quantidade = int.Parse(model.Quantidade);
+                        saida.DataHora = DateTime.Now;
+                        saida.Local = model.Local;
+                        saida.IdMercadoria = model.IdMercadoria;
 
-                    saida.IdSaida = model.IdSaida;
-                    saida.Quantidade = int.Parse(model.Quantidade);
-                    saida.DataHora = DateTime.Now;
-                    saida.Local = model.Local;
-                    saida.IdMercadoria = model.IdMercadoria;
+                        _saidaDomainService.AtualizarSaida(saida);
 
-                    _saidaDomainService.AtualizarSaida(saida);
-    
-                    TempData["MensagemSucesso"] = "Saida Atualizada com sucesso.";
+                        TempData["MensagemSucesso"] = "Saida Atualizada com sucesso.";
+                    }
+                    
 
                 }
                 catch (Exception e)
