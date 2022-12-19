@@ -12,11 +12,8 @@ Utilize o formulário para atualizar as entradas do estoque.
 @using(Html.BeginForm())
 {
     <div>@Html.HiddenFor(model => model.IdEntrada)</div>
-   <div class="mb-3">
-
-        @Html.DropDownListFor(model => model.Nome, new SelectList(Model.Mercadorias, "Value", "Text"), new{@class = "form-control"})
-
-    </div>
+        <div>@Html.HiddenFor(model => model.IdMercadoria)</div>
+  
     <div class="row">
         <div class="col mb-3">
             <label class="form-label">Quantidade</label>

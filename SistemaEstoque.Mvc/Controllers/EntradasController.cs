@@ -130,20 +130,12 @@ namespace SistemaEstoque.Mvc.Controllers
             try
             {
                 var entrada = _entradaDomainService.ObterEntrada(id);
-                model.Mercadorias = new List<SelectListItem>();
-
-                var mercadoria = _mercadoriaDomainService.ConsultarMercadorias();
-
-                foreach (var item in mercadoria)
-                {
-                    model.Nome = item.Nome;
-                    model.Mercadorias.Add(new SelectListItem { Text = model.Nome, Value = model.Nome.ToString() });
-                }
 
                 model.IdEntrada = entrada.IdEntrada;
                 model.Quantidade = entrada.Quantidade.ToString();
                 model.DataHora = entrada.DataHora;
                 model.Local = entrada.Local;
+                model.IdMercadoria = entrada.IdMercadoria;
 
             }
             catch (Exception e)
@@ -161,21 +153,16 @@ namespace SistemaEstoque.Mvc.Controllers
                 try
                 {
                     var entrada = new Entrada();
-                    var idMercadoria = _mercadoriaDomainService.NomeMercadoria(model.Nome);
-
-                    foreach (var item in idMercadoria)
-                    {
-                        entrada.IdMercadoria = item.IdMercadoria;
-                    }
+                  
                     entrada.IdEntrada = model.IdEntrada;
                     entrada.Quantidade = int.Parse(model.Quantidade);
                     entrada.DataHora = DateTime.Now;
                     entrada.Local = model.Local;
-                    entrada.IdMercadoria = entrada.IdMercadoria;
+                    entrada.IdMercadoria = model.IdMercadoria;
 
                     _entradaDomainService.AtualizarEntrada(entrada);
 
-                    TempData["MensagemSucesso"] = "Mercadoria Atualizada com sucesso.";
+                    TempData["MensagemSucesso"] = "Entrada Atualizada com sucesso.";
 
 
                 }

@@ -1,8 +1,32 @@
-﻿
+﻿@model SistemaEstoque.Mvc.Models.SaidaEdicaoModel
 @{
     ViewData["Title"] = "Edicao";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edicao Saida Estoque</h1>
+<h5>Edição de Estoque</h5>
+Utilize o formulário para atualizar as saidas do estoque.
+<hr />
+
+@using(Html.BeginForm())
+{
+    <div>@Html.HiddenFor(model => model.IdSaida)</div>
+    <div>@Html.HiddenFor(model => model.IdMercadoria)</div>
+  
+    <div class="row">
+        <div class="col mb-3">
+            <label class="form-label">Quantidade</label>
+            @Html.TextBoxFor(model => model.Quantidade, new{@class = "form-control"})
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Quantidade)</span>
+        </div>
+        <div class="col mb-3">
+            <label class="form-label">Local</label>
+            @Html.TextBoxFor(model => model.Local, new{@class = "form-control"})
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Local)</span>
+        </div>
+    </div>
+
+        <input type="submit" value="Entrada Mercadoria" class="mt-4 form-control btn btn-primary">
+
+}
 

@@ -127,6 +127,7 @@ namespace SistemaEstoque.Mvc.Controllers
                     {
                         var model = new SaidaConsultaModel();
                         var NomeMercadoria = _mercadoriaDomainService.ObterMercadoria(item.IdMercadoria);
+
                         model.Nome = NomeMercadoria.Nome;
                         model.IdSaida = item.IdSaida;
                         model.Quantidade = Convert.ToString(item.Quantidade);                  
@@ -145,9 +146,54 @@ namespace SistemaEstoque.Mvc.Controllers
             return View(lista);
         }
 
-        public IActionResult Edicao()
+        public IActionResult Edicao(Guid id)
         {
-            return View();
+            var model = new SaidaEdicaoModel();
+            try
+            {
+               var saida = _saidaDomainService.ObterSaida(id);
+
+                model.IdSaida = saida.IdSaida;
+                model.Quantidade = saida.Quantidade.ToString();
+                model.DataHora = saida.DataHora;
+                model.Local = saida.Local;
+                model.IdMercadoria = saida.IdMercadoria;
+
+            }
+            catch (Exception e)
+            {
+                TempData["MensagemErro"] = e.Message;
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edicao(SaidaEdicaoModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var saida = new Saida();
+
+                    saida.IdSaida = model.IdSaida;
+                    saida.Quantidade = int.Parse(model.Quantidade);
+                    saida.DataHora = DateTime.Now;
+                    saida.Local = model.Local;
+                    saida.IdMercadoria = model.IdMercadoria;
+
+                    _saidaDomainService.AtualizarSaida(saida);
+    
+                    TempData["MensagemSucesso"] = "Saida Atualizada com sucesso.";
+
+                }
+                catch (Exception e)
+                {
+                    TempData["MensagemErro"] = e.Message;
+                }
+            }
+
+            return RedirectToAction("Consulta");
         }
 
         public IActionResult Exclusao(Guid id)
