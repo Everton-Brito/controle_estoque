@@ -13,7 +13,7 @@ namespace SistemaEstoque.Mvc.Controllers
         private readonly ISaidaDomainService _saidaDomainService;
         private readonly IMercadoriaDomainService _mercadoriaDomainService;
 
-        public EntradasController(IEntradaDomainService entradaDomainService, IMercadoriaDomainService mercadoriaDomainService, ISaidaDomainService saidaDomainService = null)
+        public EntradasController(IEntradaDomainService entradaDomainService, IMercadoriaDomainService mercadoriaDomainService, ISaidaDomainService saidaDomainService)
         {
             _entradaDomainService = entradaDomainService;
             _mercadoriaDomainService = mercadoriaDomainService;
@@ -33,9 +33,10 @@ namespace SistemaEstoque.Mvc.Controllers
                 try
                 {
                     var entrada = new Entrada();
+
                     var idMercadoria = _mercadoriaDomainService.NomeMercadoria(model.Nome);
                     var nome = _entradaDomainService.ObterNome(model.Nome);
-                    
+
                     foreach (var item in idMercadoria)
                     {
                         entrada.IdMercadoria = item.IdMercadoria;

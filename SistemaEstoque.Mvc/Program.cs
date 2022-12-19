@@ -1,7 +1,10 @@
+using SistemaEstoque.Domain.Interfaces.Reports;
 using SistemaEstoque.Domain.Interfaces.Repositories;
 using SistemaEstoque.Domain.Interfaces.Services;
+using SistemaEstoque.Domain.Reports;
 using SistemaEstoque.Domain.Services;
 using SistemaEstoque.Infra.Data.Repositories;
+using SistemaEstoque.Infra.Reports;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,9 @@ builder.Services.AddTransient<IEntradaRepository, EntradaRepository>();
 
 builder.Services.AddTransient<ISaidaDomainService, SaidaDomainService>();
 builder.Services.AddTransient<ISaidaRepository, SaidaRepository>();
+
+builder.Services.AddTransient<IRelatorioReport, RelatorioReport>();
+builder.Services.AddTransient<IRelatorioDomainService, ReportService>();
 
 
 

@@ -35,7 +35,7 @@
         <div class="col">
             <label class="form-label">Tipo</label>
 
-           @Html.TextBoxFor(model => model.Tipo, new{@class = "form-control"})
+            @Html.DropDownList("tipo", Html.GetEnumSelectList<Tipo>(),"selecione um tipo",new {@class = "form-control"})
 
             <span class="text-danger">@Html.ValidationMessageFor(model => model.Tipo)</span>
         </div>

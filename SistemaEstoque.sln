@@ -11,9 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Camada de InfraEstrutur
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Camada de Aplicação", "1 - Camada de Aplicação", "{79AD7080-C51D-449D-A2E4-B3BB2396AFDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaEstoque.Domain", "SistemaEstoque.Domain\SistemaEstoque.Domain.csproj", "{FF859023-24C0-4D5A-9D71-D21EAD4631D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaEstoque.Domain", "SistemaEstoque.Domain\SistemaEstoque.Domain.csproj", "{FF859023-24C0-4D5A-9D71-D21EAD4631D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaEstoque.Infra.Data", "SistemaEstoque.Infra.Data\SistemaEstoque.Infra.Data.csproj", "{1A82A948-112C-47C8-B6E4-C3DF779FC66C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaEstoque.Infra.Data", "SistemaEstoque.Infra.Data\SistemaEstoque.Infra.Data.csproj", "{1A82A948-112C-47C8-B6E4-C3DF779FC66C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Acesso a Banco de Dados", "3.1 - Acesso a Banco de Dados", "{D1F27877-C7B0-411F-B24A-F6A02C87796F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - Relatorios", "3.2 - Relatorios", "{1D51ED17-0A0C-491B-BEDC-A5600C811FD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaEstoque.Infra.Reports", "SistemaEstoque.Infra.Reports\SistemaEstoque.Infra.Reports.csproj", "{260505FD-E718-40F7-A107-0DF82B3BFBFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,10 @@ Global
 		{1A82A948-112C-47C8-B6E4-C3DF779FC66C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A82A948-112C-47C8-B6E4-C3DF779FC66C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A82A948-112C-47C8-B6E4-C3DF779FC66C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{260505FD-E718-40F7-A107-0DF82B3BFBFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{260505FD-E718-40F7-A107-0DF82B3BFBFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{260505FD-E718-40F7-A107-0DF82B3BFBFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{260505FD-E718-40F7-A107-0DF82B3BFBFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,7 +50,10 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D8698A5B-E2CE-4489-A5EC-E65353D9732F} = {79AD7080-C51D-449D-A2E4-B3BB2396AFDF}
 		{FF859023-24C0-4D5A-9D71-D21EAD4631D2} = {AE7BBD16-4D35-4D2D-92E8-0E6FD1D5F5ED}
-		{1A82A948-112C-47C8-B6E4-C3DF779FC66C} = {7B253B47-48BD-4D20-B1E3-A8AE7C5C254F}
+		{1A82A948-112C-47C8-B6E4-C3DF779FC66C} = {D1F27877-C7B0-411F-B24A-F6A02C87796F}
+		{D1F27877-C7B0-411F-B24A-F6A02C87796F} = {7B253B47-48BD-4D20-B1E3-A8AE7C5C254F}
+		{1D51ED17-0A0C-491B-BEDC-A5600C811FD7} = {7B253B47-48BD-4D20-B1E3-A8AE7C5C254F}
+		{260505FD-E718-40F7-A107-0DF82B3BFBFA} = {1D51ED17-0A0C-491B-BEDC-A5600C811FD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FC9CB93-3D85-4F8C-836F-E9F561D4222C}

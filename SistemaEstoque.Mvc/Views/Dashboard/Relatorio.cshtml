@@ -1,0 +1,26 @@
+﻿@model SistemaEstoque.Mvc.Models.DashboardRelatorioModel
+@{
+    ViewData["Title"] = "Relatorio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4>Relatório de Contatos</h4>
+        <p>Selecione o formato do relatório desejado.</p>
+        <hr />
+        @using (Html.BeginForm())
+        {     
+        <div class="mb-3">
+                <label>Formato do relatório:</label> <br />
+                @Html.RadioButtonFor(model => model.Formato, "pdf")
+                <span>Documento PDF</span>               
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Gerar Relatório"
+                   class="btn btn-success" />
+            </div>
+        }
+    </div>
+</div>
+
