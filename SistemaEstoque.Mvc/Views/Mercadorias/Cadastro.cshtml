@@ -1,0 +1,51 @@
+﻿@using SistemaEstoque.Mvc.Entities
+@using SistemaEstoque.Mvc.Models
+@model SistemaEstoque.Mvc.Models.MercadoriasCadastroModel
+
+@{
+    ViewData["Title"] = "Cadastro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Cadastro</h5>
+<p>Preencha os campos para incluir uma mercadoria.</p>
+
+@using(Html.BeginForm())
+{
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        @Html.TextBoxFor(model => model.Nome, new{@class = "form-control"})
+        <span class="text-danger">@Html.ValidationMessageFor(model => model.Nome)</span>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label class="form-label">Número do Registro</label>
+            @Html.TextBoxFor(model => model.Registro, new{@class = "form-control"})
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Registro)</span>
+        </div>
+        <div class="col">
+            <label class="form-label">Fabricante</label>
+            @Html.TextBoxFor(model => model.Fabricante, new{@class = "form-control"})
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Fabricante)</span>
+        </div>
+        <div class="col">
+            <label class="form-label">Tipo</label>
+
+            @Html.DropDownList("tipo", Html.GetEnumSelectList<Tipo>(),"selecione um tipo",new {@class = "form-control"})
+
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Tipo)</span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Descrição</label>
+         @Html.TextBoxFor(model => model.Descricao, new{@class = "form-control"})
+        <span class="text-danger">@Html.ValidationMessageFor(model => model.Descricao)</span>
+    </div>
+
+
+    <input type="submit" class=" form-control btn btn-success" value="Cadastrar Mercadoria">
+
+
+}
+
+    

@@ -1,0 +1,38 @@
+﻿@model SistemaEstoque.Mvc.Models.SaidaCadastroModel
+
+@{
+    ViewData["Title"] = "Cadastro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h5>Cadastro de Saida no Estoque</h5>
+<p>Preencha os campos para cadastrar saida de uma mercadoria no estoque.</p>
+
+@using(Html.BeginForm())
+{
+    <div class="mb-3">
+
+        @Html.DropDownListFor(model => model.Nome, new SelectList(Model.Mercadorias, "Value", "Text"), new{@class = "form-control"})
+
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label class="form-label">Quantidade</label>
+            @Html.TextBoxFor(model => model.Quantidade, new{@class = "form-control"})
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Quantidade)</span>
+        </div>
+        <div class="col mb-3">
+            <label class="form-label">Local</label>
+            @Html.TextBoxFor(model => model.Local, new{@class = "form-control"})
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Local)</span>
+        </div>
+    </div>
+
+    <input type="submit" value="Entrada Mercadoria" class="mt-4 form-control btn btn-primary"> 
+
+
+}
+
+
+

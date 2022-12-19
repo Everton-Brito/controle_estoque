@@ -1,0 +1,40 @@
+﻿@model List<SistemaEstoque.Mvc.Models.EntradaConsultaModel>
+
+@{
+    ViewData["Title"] = "Consulta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Consulta de Entradas No Estoque</h5>
+Relação de entrada de mercadorias
+<hr/>
+<a href="/Entradas/Cadastro" class="btn btn-primary">Adicionar Entrada</a>
+<hr/>
+<table class="table table-hover table-sm">
+    <thead>
+        <tr>
+            <th>Nome da Mercadoria</th>
+            <th>Quantidade</th>
+            <th>Data e Hora</th>
+            <th>Local</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+            <td>@item.Nome</td>
+            <td>@item.Quantidade</td>
+            <td>@item.DataHora</td>
+            <td>@item.Local</td>
+            <td>
+                <a href="/Entradas/Edicao/@item.IdEntrada" class="btn btn-primary btn-sm">Editar</a>
+
+                <a href="/Entradas/Exclusao/@item.IdEntrada" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+        </tr>
+        }
+        
+    </tbody>
+</table>
+

@@ -1,0 +1,63 @@
+﻿
+@{
+     Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema Controle Estoque</title>
+    <!-- referência do CSS do bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Controle Estoque</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/Mercadorias/Consulta">Mercadorias</a>
+                    </li>
+                  
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Entradas/Consulta">Entrada</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Saidas/Consulta">Saida</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        @if (TempData["MensagemSucesso"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show"
+             role="alert">
+                <strong>Sucesso!</strong> @TempData["MensagemSucesso"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+            </div>
+        }
+        else @if (TempData["MensagemErro"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show"
+             role="alert">
+                <strong>Erro!</strong> @TempData["MensagemErro"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+            </div>
+        }
+    <div class="container mt-3">
+        @RenderBody()
+    </div>
+
+     <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
