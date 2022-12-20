@@ -19,6 +19,18 @@ namespace SistemaEstoque.Mvc.Controllers
 
         public IActionResult Dashboard()
         {
+            try
+            {
+                var entradas = _entradaDomainService.ConsultarEntradas();
+                var saidas = _saidaDomainService.ConsultarSaidas();
+
+                TempData["TotalEntradas"] = entradas.Sum(e => e.Quantidade);
+                TempData["TotalSaidas"] = saidas.Sum(s => s.Quantidade);
+            }
+            catch (Exception e)
+            {
+                TempData["MensagemErro"] = e.Message;
+            }
             return View();
         }
 

@@ -4,5 +4,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Dashboard</h1>
+<h5>Dashboard - Controle de Entradas e Saidas</h5>
+Comparativo de entradas e saidas de mercadoria.
+<hr />
 
+<div class="row mt-2">
+    <div class="col-md-12 text-center">
+        <div id="grafico" />
+    </div>
+</div>
+    @section scripts {
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script>
+        var array = [];
+        array.push(['Entradas de Mercadorias', @TempData["TotalEntradas"]]);
+        array.push(['Saidas de Mercadorias', @TempData["TotalSaidas"]]);
+        new Highcharts.Chart({
+            chart: {
+                type: 'pie',
+                renderTo: 'grafico'
+            },
+            title: {
+                text: 'Somatório de Entradas e Saídas de Mercadoria'
+            },
+            subtitle: {
+                text: 'Resultado de Entradas e Saidas de Mercadoria'
+            },
+            plotOptions: {
+                pie: {
+                    innerSize: '60%'
+                }
+            },
+            exporting: {
+                enabled: false
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                data: array
+            }]
+        })
+    </script>
+}
